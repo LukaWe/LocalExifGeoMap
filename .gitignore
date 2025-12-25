@@ -1,0 +1,40 @@
+# GPS Track Viewer .gitignore
+
+# Logs
+public/logs/*.log
+public/logs/*
+!public/logs/.htaccess
+
+# Cache
+public/cache/*
+!public/cache/.gitkeep
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# PHP dependencies (uncomment if you want to exclude vendor)
+/vendor/
+
+# Composer
+composer.phar
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Session files
+sess_*
