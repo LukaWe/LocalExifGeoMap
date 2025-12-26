@@ -11,7 +11,7 @@ It's still a beautiful disaster—powered by sea breeze, insomnia, and questiona
 All translations besides Bavarian (which I painstakingly did myself, because I'm apparently that specific flavor of weird) were churned out by AI, mostly [EuroLLM](https://eurollm.io/) and [Claude](https://claude.ai). So if German reads like a robot having a stroke, you know why.
 
 ## 📸 Screenshots
-[Demo URL](https://maps.vuuc.de)
+[Demo URL](https://exif.vuuc.de)
 
 | <img src="screenshots/roundtrip.png" width="100%" alt="Interactive Map"> | <img src="screenshots/dark_mode.png" width="100%" alt="Dark Mode"> | <img src="screenshots/elevation.png" width="100%" alt="Elevation Profile"> | <img src="screenshots/overpass_import.png" width="100%" alt="Overpass"> |
 |:---:|:---:|:---:|:---:|
