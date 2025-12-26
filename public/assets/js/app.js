@@ -3399,13 +3399,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p><a href="https://paypal.me/gpstrackviewer" target="_blank">Donate via PayPal</a></p>
                         
                         <h4>₿ Bitcoin</h4>
-                        <p><code>1A1z7agoat4oPLQyANVv8FqvCvpEZDCSXd</code></p>
+                        <p><code>bc1q3lz8vxpk0rchqn6dq8g08rkcqts425csuvnjr2477uzdenak5n8sfds2ke</code></p>
                         
                         <h4>Ξ Ethereum</h4>
-                        <p><code>0x4A5E8f3e0d9b8c7a6f1e2d3c4b5a6f7e8d9c0b1a</code></p>
+                        <p><code>PLACEHOLDER</code></p>
                         
                         <h4>🟡 Monero</h4>
-                        <p><code>87M6JJxZMZXznvHf1sQBQu3Z1M3vwjLGQq6VUu8oLPjSjZJHB8jvWWWuKYa4FdNUCQwcWHGGvjPSKEYN8MgcRfqVpnw9Qje</code></p>
+                        <p><code>PLACEHOLDER</code></p>
                         
                         <p style="margin-top: 20px; font-size: 12px; color: var(--text-secondary);">Every contribution helps us improve the tool and keep it free for everyone. Thank you!</p>
                     </div>
