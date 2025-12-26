@@ -15,9 +15,7 @@ All translations besides Bavarian (which I painstakingly did myself, because I'm
 | <img src="screenshots/roundtrip.png" width="100%" alt="Interactive Map"> | <img src="screenshots/dark_mode.png" width="100%" alt="Dark Mode"> | <img src="screenshots/elevation.png" width="100%" alt="Elevation Profile"> | <img src="screenshots/overpass_import.png" width="100%" alt="Overpass"> |
 |:---:|:---:|:---:|:---:|
 | *Interactive Map* | *Dark Mode* | *Elevation Profile* | *Overpass Import* |
-
-## Demo
-[https://maps.vuuc.de](https://maps.vuuc.de)
+[Demo URL](https://maps.vuuc.de)
 
 ## ✨ Features
 
