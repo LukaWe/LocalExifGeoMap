@@ -154,6 +154,25 @@ body {
     box-shadow: 0 0 3px var(--button-blue);
 }
 
+/* Dropdown options - ensure readable text in all themes */
+.control-select-small option {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+/* Light mode specific - ensure dark text on light background */
+select option,
+.control-select-small option {
+    color: #333333;
+    background-color: #ffffff;
+}
+
+body.dark-mode select option,
+body.dark-mode .control-select-small option {
+    color: #e0e0e0;
+    background-color: #2a2a2a;
+}
+
 /* Small Toggle Button */
 .toggle-btn-small {
     padding: 6px 10px;

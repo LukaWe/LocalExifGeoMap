@@ -331,8 +331,11 @@ function updateLanguage(lang) {
     document.getElementById('app-title').textContent = translations[lang].title;
     document.title = translations[lang].title;
 
-    // v20: Update heatmap scheme labels
+    // v20: Update dropdown labels
     updateHeatmapSchemeLabels();
+    updateLineStyleLabels();
+    updatePointShapeLabels();
+    updateOsmCategoryLabels();
 }
 
 /**
@@ -359,6 +362,90 @@ function updateHeatmapSchemeLabels() {
         console.log('Heatmap scheme labels updated for:', lang);
     } catch (e) {
         console.error('Error updating scheme labels:', e);
+    }
+}
+
+/**
+ * UPDATE LINE STYLE LABELS
+ * Make line style dropdown multilingual
+ */
+function updateLineStyleLabels() {
+    try {
+        const styleSelect = document.getElementById('line-style');
+        if (!styleSelect) return;
+
+        const lang = currentLang || 'en';
+        const styleLabels = lineStyleTranslations[lang] || lineStyleTranslations.en;
+
+        // Map option values to translation keys
+        const valueToKey = {
+            '': 'solid',
+            '10, 10': 'dashed',
+            '2, 5': 'dotted',
+            '10, 5, 2, 5': 'dashdot'
+        };
+
+        const options = styleSelect.querySelectorAll('option');
+        options.forEach(option => {
+            const key = valueToKey[option.value];
+            if (key && styleLabels[key]) {
+                option.textContent = styleLabels[key];
+            }
+        });
+
+        console.log('Line style labels updated for:', lang);
+    } catch (e) {
+        console.error('Error updating line style labels:', e);
+    }
+}
+
+/**
+ * UPDATE POINT SHAPE LABELS
+ * Make point shape dropdown multilingual
+ */
+function updatePointShapeLabels() {
+    try {
+        const shapeSelect = document.getElementById('point-shape');
+        if (!shapeSelect) return;
+
+        const lang = currentLang || 'en';
+        const shapeLabels = pointShapeTranslations[lang] || pointShapeTranslations.en;
+
+        const options = shapeSelect.querySelectorAll('option');
+        options.forEach(option => {
+            if (shapeLabels[option.value]) {
+                option.textContent = shapeLabels[option.value];
+            }
+        });
+
+        console.log('Point shape labels updated for:', lang);
+    } catch (e) {
+        console.error('Error updating point shape labels:', e);
+    }
+}
+
+/**
+ * UPDATE OSM CATEGORY LABELS
+ * Make OpenStreetMap data category dropdown multilingual
+ */
+function updateOsmCategoryLabels() {
+    try {
+        const categorySelect = document.getElementById('osm-category');
+        if (!categorySelect) return;
+
+        const lang = currentLang || 'en';
+        const categoryLabels = osmCategoryTranslations[lang] || osmCategoryTranslations.en;
+
+        const options = categorySelect.querySelectorAll('option');
+        options.forEach(option => {
+            if (categoryLabels[option.value]) {
+                option.textContent = categoryLabels[option.value];
+            }
+        });
+
+        console.log('OSM category labels updated for:', lang);
+    } catch (e) {
+        console.error('Error updating OSM category labels:', e);
     }
 }
 
@@ -3348,19 +3435,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get Contact Content
     function getContactContent() {
+        // XOR-encrypted email (prevents email harvesting bots)
+        // The email is decrypted and drawn to canvas at runtime
+        const canvasId = 'email-canvas-' + Date.now();
+
+        // Get translated content
+        const lang = currentLang || 'en';
+        const content = contactContent[lang] || contactContent.en;
+
+        // Schedule canvas rendering after modal is displayed
+        setTimeout(() => {
+            renderObfuscatedEmail(canvasId);
+        }, 100);
+
         return `
                     <div class="contact-content">
-                        <h3>Contact Us</h3>
-                        <p>Have questions, bug reports, or feature requests? We'd love to hear from you!</p>
+                        <h3>${content.title}</h3>
+                        <p>${content.intro}</p>
                         
-                        <p><strong>Email:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
+                        <p><strong>${content.email}:</strong> <canvas id="${canvasId}" style="vertical-align: middle; cursor: pointer;" title="${content.clickToCopy}"></canvas></p>
                         
-                        <h4>Why we built this</h4>
-                        <p>GPS Track Viewer was created to give everyone access to professional GPS track visualization tools without expensive software or privacy concerns. We believe your location data belongs to you, not cloud servers. That's why everything runs locally in your browser.</p>
+                        <h4>${content.whyTitle}</h4>
+                        <p>${content.whyText}</p>
                         
-                        <p>Whether you're a hiker, cyclist, photographer, or researcher, we hope this tool helps you understand your journeys better.</p>
+                        <p>${content.closing}</p>
                     </div>
                 `;
+    }
+
+    /**
+     * Renders XOR-obfuscated email to canvas
+     * This prevents email harvesters from scraping the address
+     */
+    function renderObfuscatedEmail(canvasId) {
+        try {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+
+            // XOR-encrypted email data (key: 42)
+            // To encrypt your email: email.split('').map(c => c.charCodeAt(0) ^ 42)
+            const hiddenData = [75, 78, 71, 67, 68, 106, 78, 69, 71, 75, 67, 68, 4, 94, 70, 78];
+            const key = 42;
+
+            // Decrypt locally
+            let decoded = "";
+            for (let i = 0; i < hiddenData.length; i++) {
+                decoded += String.fromCharCode(hiddenData[i] ^ key);
+            }
+
+            const ctx = canvas.getContext("2d");
+
+            // Configure font style to match the website
+            const fontSize = 14;
+            const fontFamily = "'Inter', Arial, sans-serif";
+            ctx.font = `${fontSize}px ${fontFamily}`;
+
+            // Measure text width to resize canvas tightly
+            const textMetrics = ctx.measureText(decoded);
+            canvas.width = Math.ceil(textMetrics.width) + 2;
+            canvas.height = Math.ceil(fontSize * 1.4);
+
+            // Re-apply font settings after resize (resizing clears context)
+            ctx.font = `${fontSize}px ${fontFamily}`;
+
+            // Use appropriate text color based on dark mode
+            const isDark = document.body.classList.contains('dark-mode');
+            ctx.fillStyle = isDark ? "#4dabf7" : "#1971c2"; // Link-like blue color
+            ctx.textBaseline = "middle";
+
+            // Draw the text
+            ctx.fillText(decoded, 0, canvas.height / 2);
+
+            // Add click handler to copy email
+            canvas.addEventListener('click', () => {
+                navigator.clipboard.writeText(decoded).then(() => {
+                    showNotification('Email copied to clipboard!', 'success');
+                }).catch(err => {
+                    console.error('Failed to copy email:', err);
+                });
+            });
+
+            console.log('Obfuscated email rendered to canvas');
+        } catch (e) {
+            console.error('Error rendering obfuscated email:', e);
+        }
     }
 
 

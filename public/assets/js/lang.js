@@ -1503,6 +1503,397 @@ const heatmapSchemeTranslations = {
 };
 
 /**
+ * LINE STYLE TRANSLATIONS
+ * Dropdown options for track line style
+ */
+const lineStyleTranslations = {
+    en: {
+        solid: "Solid",
+        dashed: "Dashed",
+        dotted: "Dotted",
+        dashdot: "Dash-Dot"
+    },
+    de: {
+        solid: "Durchgezogen",
+        dashed: "Gestrichelt",
+        dotted: "Gepunktet",
+        dashdot: "Strich-Punkt"
+    },
+    it: {
+        solid: "Continuo",
+        dashed: "Tratteggiato",
+        dotted: "Punteggiato",
+        dashdot: "Tratto-Punto"
+    },
+    hr: {
+        solid: "Puna",
+        dashed: "Isprekidana",
+        dotted: "Točkasta",
+        dashdot: "Crta-Točka"
+    },
+    pl: {
+        solid: "Ciągła",
+        dashed: "Przerywana",
+        dotted: "Kropkowana",
+        dashdot: "Kreska-Kropka"
+    },
+    es: {
+        solid: "Sólido",
+        dashed: "Discontinuo",
+        dotted: "Punteado",
+        dashdot: "Guión-Punto"
+    },
+    uk: {
+        solid: "Суцільна",
+        dashed: "Пунктирна",
+        dotted: "Крапкова",
+        dashdot: "Тире-Крапка"
+    },
+    nl: {
+        solid: "Doorgetrokken",
+        dashed: "Gestreept",
+        dotted: "Gestippeld",
+        dashdot: "Streep-Punt"
+    },
+    sv: {
+        solid: "Heldragen",
+        dashed: "Streckad",
+        dotted: "Prickad",
+        dashdot: "Streck-Punkt"
+    },
+    no: {
+        solid: "Heltrukket",
+        dashed: "Stiplet",
+        dotted: "Prikket",
+        dashdot: "Strek-Punkt"
+    },
+    by: {
+        solid: "Durchzogn",
+        dashed: "Gstrichelt",
+        dotted: "Punktiert",
+        dashdot: "Strich-Punkt"
+    }
+};
+
+/**
+ * POINT SHAPE TRANSLATIONS
+ * Dropdown options for track point shape
+ */
+const pointShapeTranslations = {
+    en: {
+        circle: "Circle",
+        square: "Square"
+    },
+    de: {
+        circle: "Kreis",
+        square: "Quadrat"
+    },
+    it: {
+        circle: "Cerchio",
+        square: "Quadrato"
+    },
+    hr: {
+        circle: "Krug",
+        square: "Kvadrat"
+    },
+    pl: {
+        circle: "Koło",
+        square: "Kwadrat"
+    },
+    es: {
+        circle: "Círculo",
+        square: "Cuadrado"
+    },
+    uk: {
+        circle: "Коло",
+        square: "Квадрат"
+    },
+    nl: {
+        circle: "Cirkel",
+        square: "Vierkant"
+    },
+    sv: {
+        circle: "Cirkel",
+        square: "Kvadrat"
+    },
+    no: {
+        circle: "Sirkel",
+        square: "Firkant"
+    },
+    by: {
+        circle: "Kroas",
+        square: "Quadratl"
+    }
+};
+
+/**
+ * OSM CATEGORY TRANSLATIONS
+ * Dropdown options for OpenStreetMap data categories
+ */
+const osmCategoryTranslations = {
+    en: {
+        tourism: "📷 Tourism (Viewpoints, Museums)",
+        sustenance: "🍔 Food & Drink",
+        water: "💧 Drinking Water",
+        peaks: "⛰️ Peaks",
+        historic: "🏰 Castles & Ruins",
+        camping: "⛺ Camping",
+        huts: "🛖 Alpine Huts",
+        nsg: "🌳 Nature Reserves (NSG)",
+        lsg: "🏞️ Landscape Protection (LSG)",
+        vsg: "🦅 Bird Sanctuaries",
+        transport: "🚌 Public Transport",
+        ffh: "🌿 FFH Areas (Flora-Fauna-Habitat)"
+    },
+    de: {
+        tourism: "📷 Tourismus (Aussichtspunkte, Museen)",
+        sustenance: "🍔 Essen & Trinken",
+        water: "💧 Trinkwasser",
+        peaks: "⛰️ Gipfel",
+        historic: "🏰 Burgen & Ruinen",
+        camping: "⛺ Camping",
+        huts: "🛖 Berghütten",
+        nsg: "🌳 Naturschutzgebiete (NSG)",
+        lsg: "🏞️ Landschaftsschutz (LSG)",
+        vsg: "🦅 Vogelschutzgebiete",
+        transport: "🚌 Öffentlicher Nahverkehr",
+        ffh: "🌿 FFH-Gebiete (Flora-Fauna-Habitat)"
+    },
+    it: {
+        tourism: "📷 Turismo (Punti Panoramici, Musei)",
+        sustenance: "🍔 Cibo e Bevande",
+        water: "💧 Acqua Potabile",
+        peaks: "⛰️ Cime",
+        historic: "🏰 Castelli e Rovine",
+        camping: "⛺ Campeggio",
+        huts: "🛖 Rifugi Alpini",
+        nsg: "🌳 Riserve Naturali",
+        lsg: "🏞️ Protezione Paesaggistica",
+        vsg: "🦅 Santuari degli Uccelli",
+        transport: "🚌 Trasporto Pubblico",
+        ffh: "🌿 Aree FFH (Flora-Fauna-Habitat)"
+    },
+    hr: {
+        tourism: "📷 Turizam (Vidikovci, Muzeji)",
+        sustenance: "🍔 Hrana i Piće",
+        water: "💧 Pitka Voda",
+        peaks: "⛰️ Vrhovi",
+        historic: "🏰 Dvorci i Ruševine",
+        camping: "⛺ Kampiranje",
+        huts: "🛖 Planinske Kuće",
+        nsg: "🌳 Rezervati Prirode",
+        lsg: "🏞️ Zaštita Krajolika",
+        vsg: "🦅 Ptičja Utočišta",
+        transport: "🚌 Javni Prijevoz",
+        ffh: "🌿 FFH Područja"
+    },
+    pl: {
+        tourism: "📷 Turystyka (Punkty Widokowe, Muzea)",
+        sustenance: "🍔 Jedzenie i Napoje",
+        water: "💧 Woda Pitna",
+        peaks: "⛰️ Szczyty",
+        historic: "🏰 Zamki i Ruiny",
+        camping: "⛺ Kemping",
+        huts: "🛖 Schroniska Górskie",
+        nsg: "🌳 Rezerwaty Przyrody",
+        lsg: "🏞️ Ochrona Krajobrazu",
+        vsg: "🦅 Rezerwaty Ptaków",
+        transport: "🚌 Transport Publiczny",
+        ffh: "🌿 Obszary FFH"
+    },
+    es: {
+        tourism: "📷 Turismo (Miradores, Museos)",
+        sustenance: "🍔 Comida y Bebida",
+        water: "💧 Agua Potable",
+        peaks: "⛰️ Cumbres",
+        historic: "🏰 Castillos y Ruinas",
+        camping: "⛺ Camping",
+        huts: "🛖 Refugios de Montaña",
+        nsg: "🌳 Reservas Naturales",
+        lsg: "🏞️ Protección del Paisaje",
+        vsg: "🦅 Santuarios de Aves",
+        transport: "🚌 Transporte Público",
+        ffh: "🌿 Áreas FFH (Flora-Fauna-Hábitat)"
+    },
+    uk: {
+        tourism: "📷 Туризм (Оглядові, Музеї)",
+        sustenance: "🍔 Їжа та Напої",
+        water: "💧 Питна Вода",
+        peaks: "⛰️ Вершини",
+        historic: "🏰 Замки та Руїни",
+        camping: "⛺ Кемпінг",
+        huts: "🛖 Гірські Притулки",
+        nsg: "🌳 Природні Заповідники",
+        lsg: "🏞️ Ландшафтний Захист",
+        vsg: "🦅 Пташині Заказники",
+        transport: "🚌 Громадський Транспорт",
+        ffh: "🌿 Території FFH"
+    },
+    nl: {
+        tourism: "📷 Toerisme (Uitzichtpunten, Musea)",
+        sustenance: "🍔 Eten & Drinken",
+        water: "💧 Drinkwater",
+        peaks: "⛰️ Toppen",
+        historic: "🏰 Kastelen & Ruïnes",
+        camping: "⛺ Kamperen",
+        huts: "🛖 Berghutten",
+        nsg: "🌳 Natuurreservaten",
+        lsg: "🏞️ Landschapsbescherming",
+        vsg: "🦅 Vogelreservaten",
+        transport: "🚌 Openbaar Vervoer",
+        ffh: "🌿 FFH-Gebieden"
+    },
+    sv: {
+        tourism: "📷 Turism (Utsiktsplatser, Museer)",
+        sustenance: "🍔 Mat & Dryck",
+        water: "💧 Dricksvatten",
+        peaks: "⛰️ Toppar",
+        historic: "🏰 Slott & Ruiner",
+        camping: "⛺ Camping",
+        huts: "🛖 Fjällstugor",
+        nsg: "🌳 Naturreservat",
+        lsg: "🏞️ Landskapsskydd",
+        vsg: "🦅 Fågelskyddsområden",
+        transport: "🚌 Kollektivtrafik",
+        ffh: "🌿 FFH-Områden"
+    },
+    no: {
+        tourism: "📷 Turisme (Utsiktspunkter, Museer)",
+        sustenance: "🍔 Mat & Drikke",
+        water: "💧 Drikkevann",
+        peaks: "⛰️ Topper",
+        historic: "🏰 Slott & Ruiner",
+        camping: "⛺ Camping",
+        huts: "🛖 Fjellhytter",
+        nsg: "🌳 Naturreservater",
+        lsg: "🏞️ Landskapsvern",
+        vsg: "🦅 Fuglereservater",
+        transport: "🚌 Kollektivtransport",
+        ffh: "🌿 FFH-Områder"
+    },
+    by: {
+        tourism: "📷 Tourismus (Aussichtspunkt, Museen)",
+        sustenance: "🍔 Essn & Dringa",
+        water: "💧 Wossa",
+        peaks: "⛰️ Gipfl",
+        historic: "🏰 Burgn & Ruinen",
+        camping: "⛺ Camping",
+        huts: "🛖 Berghüttn",
+        nsg: "🌳 Naturschutzgebiete",
+        lsg: "🏞️ Landschaftsschutz",
+        vsg: "🦅 Vogelschutzgebiete",
+        transport: "🚌 Öffentlicher Nahverkehr",
+        ffh: "🌿 FFH-Gebiete"
+    }
+};
+
+/**
+ * CONTACT CONTENT TRANSLATIONS
+ * Contact modal content for all languages
+ */
+const contactContent = {
+    en: {
+        title: "Contact Us",
+        intro: "Have questions, bug reports, or feature requests? We'd love to hear from you!",
+        email: "Email",
+        clickToCopy: "Click to copy email",
+        whyTitle: "Why we built this",
+        whyText: "GPS Track Viewer was created to give everyone access to professional GPS track visualization tools without expensive software or privacy concerns. We believe your location data belongs to you, not cloud servers. That's why everything runs locally in your browser.",
+        closing: "Whether you're a hiker, cyclist, photographer, or researcher, we hope this tool helps you understand your journeys better."
+    },
+    de: {
+        title: "Kontakt",
+        intro: "Haben Sie Fragen, Fehlerberichte oder Funktionswünsche? Wir freuen uns von Ihnen zu hören!",
+        email: "E-Mail",
+        clickToCopy: "Klicken zum Kopieren",
+        whyTitle: "Warum wir das entwickelt haben",
+        whyText: "GPS Track Viewer wurde entwickelt, um jedem Zugang zu professionellen GPS-Track-Visualisierungstools zu geben - ohne teure Software oder Datenschutzbedenken. Wir glauben, dass Ihre Standortdaten Ihnen gehören, nicht Cloud-Servern. Deshalb läuft alles lokal in Ihrem Browser.",
+        closing: "Ob Sie Wanderer, Radfahrer, Fotograf oder Forscher sind - wir hoffen, dass dieses Tool Ihnen hilft, Ihre Reisen besser zu verstehen."
+    },
+    it: {
+        title: "Contattaci",
+        intro: "Hai domande, segnalazioni di bug o richieste di funzionalità? Ci piacerebbe sentirti!",
+        email: "Email",
+        clickToCopy: "Clicca per copiare",
+        whyTitle: "Perché l'abbiamo creato",
+        whyText: "GPS Track Viewer è stato creato per dare a tutti accesso a strumenti professionali di visualizzazione tracce GPS senza software costosi o preoccupazioni per la privacy. Crediamo che i tuoi dati di posizione appartengano a te, non ai server cloud. Ecco perché tutto funziona localmente nel tuo browser.",
+        closing: "Che tu sia un escursionista, ciclista, fotografo o ricercatore, speriamo che questo strumento ti aiuti a comprendere meglio i tuoi viaggi."
+    },
+    hr: {
+        title: "Kontaktirajte nas",
+        intro: "Imate pitanja, prijave grešaka ili zahtjeve za značajke? Voljeli bismo čuti od vas!",
+        email: "E-pošta",
+        clickToCopy: "Kliknite za kopiranje",
+        whyTitle: "Zašto smo ovo napravili",
+        whyText: "GPS Track Viewer je stvoren kako bi svima omogućio pristup profesionalnim alatima za vizualizaciju GPS tragova bez skupog softvera ili briga o privatnosti. Vjerujemo da vaši podaci o lokaciji pripadaju vama, a ne cloud serverima. Zato sve radi lokalno u vašem pregledniku.",
+        closing: "Bilo da ste planinar, biciklist, fotograf ili istraživač, nadamo se da će vam ovaj alat pomoći bolje razumjeti vaša putovanja."
+    },
+    pl: {
+        title: "Kontakt",
+        intro: "Masz pytania, zgłoszenia błędów lub prośby o funkcje? Chętnie od Ciebie usłyszymy!",
+        email: "E-mail",
+        clickToCopy: "Kliknij aby skopiować",
+        whyTitle: "Dlaczego to stworzyliśmy",
+        whyText: "GPS Track Viewer został stworzony, aby dać każdemu dostęp do profesjonalnych narzędzi do wizualizacji tras GPS bez drogiego oprogramowania lub obaw o prywatność. Wierzymy, że Twoje dane lokalizacyjne należą do Ciebie, nie do serwerów w chmurze. Dlatego wszystko działa lokalnie w Twojej przeglądarce.",
+        closing: "Niezależnie od tego, czy jesteś turystą, rowerzystą, fotografem czy badaczem, mamy nadzieję, że to narzędzie pomoże Ci lepiej zrozumieć Twoje podróże."
+    },
+    es: {
+        title: "Contáctenos",
+        intro: "¿Tienes preguntas, informes de errores o solicitudes de funciones? ¡Nos encantaría saber de ti!",
+        email: "Correo",
+        clickToCopy: "Clic para copiar",
+        whyTitle: "Por qué construimos esto",
+        whyText: "GPS Track Viewer fue creado para dar a todos acceso a herramientas profesionales de visualización de rutas GPS sin software costoso ni preocupaciones de privacidad. Creemos que tus datos de ubicación te pertenecen a ti, no a servidores en la nube. Por eso todo funciona localmente en tu navegador.",
+        closing: "Ya seas excursionista, ciclista, fotógrafo o investigador, esperamos que esta herramienta te ayude a comprender mejor tus viajes."
+    },
+    uk: {
+        title: "Зв'яжіться з нами",
+        intro: "Маєте питання, звіти про помилки або запити на функції? Ми будемо раді вас почути!",
+        email: "Електронна пошта",
+        clickToCopy: "Натисніть для копіювання",
+        whyTitle: "Чому ми це створили",
+        whyText: "GPS Track Viewer було створено, щоб дати кожному доступ до професійних інструментів візуалізації GPS-треків без дорогого програмного забезпечення чи проблем з конфіденційністю. Ми віримо, що ваші дані про місцезнаходження належать вам, а не хмарним серверам. Тому все працює локально у вашому браузері.",
+        closing: "Незалежно від того, чи ви турист, велосипедист, фотограф чи дослідник, ми сподіваємося, що цей інструмент допоможе вам краще зрозуміти ваші подорожі."
+    },
+    nl: {
+        title: "Neem contact op",
+        intro: "Heb je vragen, bugrapporten of functieverzoeken? We horen graag van je!",
+        email: "E-mail",
+        clickToCopy: "Klik om te kopiëren",
+        whyTitle: "Waarom we dit hebben gebouwd",
+        whyText: "GPS Track Viewer is gemaakt om iedereen toegang te geven tot professionele GPS-track visualisatietools zonder dure software of privacyzorgen. We geloven dat je locatiegegevens van jou zijn, niet van cloudservers. Daarom draait alles lokaal in je browser.",
+        closing: "Of je nu een wandelaar, fietser, fotograaf of onderzoeker bent, we hopen dat deze tool je helpt je reizen beter te begrijpen."
+    },
+    sv: {
+        title: "Kontakta oss",
+        intro: "Har du frågor, felrapporter eller funktionsönskemål? Vi vill gärna höra från dig!",
+        email: "E-post",
+        clickToCopy: "Klicka för att kopiera",
+        whyTitle: "Varför vi byggde detta",
+        whyText: "GPS Track Viewer skapades för att ge alla tillgång till professionella GPS-spårvisualiseringsverktyg utan dyr programvara eller integritetsproblem. Vi tror att dina platsdata tillhör dig, inte molnservrar. Därför körs allt lokalt i din webbläsare.",
+        closing: "Oavsett om du är vandrare, cyklist, fotograf eller forskare, hoppas vi att detta verktyg hjälper dig att bättre förstå dina resor."
+    },
+    no: {
+        title: "Kontakt oss",
+        intro: "Har du spørsmål, feilrapporter eller funksjonsforespørsler? Vi vil gjerne høre fra deg!",
+        email: "E-post",
+        clickToCopy: "Klikk for å kopiere",
+        whyTitle: "Hvorfor vi bygde dette",
+        whyText: "GPS Track Viewer ble opprettet for å gi alle tilgang til profesjonelle GPS-sporvisualiseringsverktøy uten dyr programvare eller personvernproblemer. Vi mener at posisjonsdataene dine tilhører deg, ikke skyservere. Derfor kjører alt lokalt i nettleseren din.",
+        closing: "Enten du er turgåer, syklist, fotograf eller forsker, håper vi at dette verktøyet hjelper deg å bedre forstå reisene dine."
+    },
+    by: {
+        title: "Kontakt",
+        intro: "Host Frogn, Fehlerberichte oda Funktionswünsch? Mia frein uns vo dir zhörn!",
+        email: "E-Mail",
+        clickToCopy: "Klick zum Kopiern",
+        whyTitle: "Warum mia des gmacht ham",
+        whyText: "GPS Track Viewer is entstondn, damit a jeder Zugang zu professionelle GPS-Track-Visualisierungstools hot - ohne teure Software oda Datenschutzbedenken. Mia glaubn, dass dei Standortdatn dir ghörn, ned de Cloud-Server. Deshoib laft ois lokal in deim Browser.",
+        closing: "Ob du Wanderer, Radlfoahr, Fotograf oda Forscher bist - mia hoffn, dass des Tool dir hilft, deine Reisn besser zversteh."
+    }
+};
+
+/**
  * WELCOME TOAST TRANSLATIONS v21
  * Shown on first visit - explains what the app does
  */
@@ -1549,7 +1940,7 @@ const welcomeToastContent = {
     },
     by: {
         title: "👋 Servus beim GPS Track Viewer!",
-        description: "Des kostenlose Tool zeigt da dei Reis auf ana Koartn, indem's de GPS-Datn aus deinen Fotos ausliest. Klick oafach auf 'Bilder analysieren' und wähl Fotos, de mit ana GPS-Kamera oder am Smartphone gmacht worn san. De App laft komplett im Browser - dei Datn verlassen nia dei Gerät!"
+        description: "Des kostenlose Tool zoagt da dei Reis auf ana Koartn o, indem's de GPS-Datn aus deinen Fotos ausliest. Klick oafach auf 'Bilder analysieren' und wähl Fotos, de mit ana GPS-Kamera oder am Smartphone gmacht worn san. De App laft komplett im Browser - dei Datn verlassen nia dei Gerät!"
     }
 };
 
@@ -1559,5 +1950,9 @@ if (typeof window !== 'undefined') {
     window.creditsContent = creditsContent;
     window.translations = translations;
     window.heatmapSchemeTranslations = heatmapSchemeTranslations;
+    window.lineStyleTranslations = lineStyleTranslations;
+    window.pointShapeTranslations = pointShapeTranslations;
+    window.osmCategoryTranslations = osmCategoryTranslations;
+    window.contactContent = contactContent;
     window.welcomeToastContent = welcomeToastContent;
 }
