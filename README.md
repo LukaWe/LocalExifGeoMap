@@ -16,6 +16,9 @@ All translations besides Bavarian (which I painstakingly did myself, because I'm
 |:---:|:---:|:---:|:---:|
 | *Interactive Map* | *Dark Mode* | *Elevation Profile* | *Overpass Import* |
 
+## Demo
+[https://maps.vuuc.de](https://maps.vuuc.de)
+
 ## ✨ Features
 
 ### 📷 Image Analysis

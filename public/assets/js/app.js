@@ -510,14 +510,14 @@ function showWelcomeToast() {
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10000;
-            background: var(--bg-secondary, #2d2d2d);
+            background: var(--bg-primary, #ffffff);
             border-radius: 16px;
             padding: 30px;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             animation: welcomeFadeIn 0.4s ease-out;
-            border: 1px solid var(--border-color, #444);
+            border: 1px solid var(--border-color, #e0e0e0);
         `;
 
         // Add animation and additional styles
@@ -530,13 +530,13 @@ function showWelcomeToast() {
             #welcome-toast h3 {
                 margin: 0 0 15px 0;
                 font-size: 24px;
-                color: var(--text-primary, #fff);
+                color: var(--text-primary, #333);
             }
             #welcome-toast p {
                 margin: 0 0 25px 0;
                 font-size: 15px;
                 line-height: 1.6;
-                color: var(--text-secondary, #aaa);
+                color: var(--text-secondary, #555);
             }
             #welcome-toast .welcome-close {
                 position: absolute;
@@ -544,14 +544,14 @@ function showWelcomeToast() {
                 right: 15px;
                 background: none;
                 border: none;
-                color: var(--text-secondary, #aaa);
+                color: var(--text-secondary, #666);
                 font-size: 28px;
                 cursor: pointer;
                 line-height: 1;
                 padding: 0;
             }
             #welcome-toast .welcome-close:hover {
-                color: var(--text-primary, #fff);
+                color: var(--text-primary, #333);
             }
             #welcome-toast .welcome-got-it {
                 background: linear-gradient(135deg, #007bff, #0056b3);
