@@ -1069,6 +1069,17 @@ input[type="range"]::-moz-range-thumb {
     padding: 20px;
 }
 
+/* Ensure proper text spacing in modal content */
+.modal-body p,
+.modal-body h3,
+.modal-body h4,
+.contact-content p {
+    white-space: normal;
+    word-spacing: 0.05em;
+    letter-spacing: normal;
+    line-height: 1.6;
+}
+
 /* FAQ Styles */
 .faq-container {
     display: flex;

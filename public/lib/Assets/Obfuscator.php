@@ -80,13 +80,79 @@ class Obfuscator
      */
     private function minimizeWhitespace(string $code): string
     {
-        // Replace multiple whitespaces with single space
-        $code = preg_replace('/\s+/', ' ', $code);
+        // Process code while preserving string literals
+        $result = '';
+        $inString = false;
+        $stringChar = '';
+        $escaped = false;
+        $length = strlen($code);
+        $i = 0;
         
-        // Remove spaces around operators and punctuation
-        $code = preg_replace('/\s*([{};,:\(\)\[\]])\s*/', '$1', $code);
+        while ($i < $length) {
+            $char = $code[$i];
+            
+            if ($escaped) {
+                $result .= $char;
+                $escaped = false;
+                $i++;
+                continue;
+            }
+            
+            if ($char === '\\' && $inString) {
+                $result .= $char;
+                $escaped = true;
+                $i++;
+                continue;
+            }
+            
+            if (!$inString && ($char === '"' || $char === "'" || $char === '`')) {
+                $inString = true;
+                $stringChar = $char;
+                $result .= $char;
+                $i++;
+                continue;
+            }
+            
+            if ($inString && $char === $stringChar) {
+                $inString = false;
+                $stringChar = '';
+                $result .= $char;
+                $i++;
+                continue;
+            }
+            
+            // If inside string, preserve everything
+            if ($inString) {
+                $result .= $char;
+                $i++;
+                continue;
+            }
+            
+            // Outside strings: minimize whitespace
+            if (ctype_space($char)) {
+                // Collapse multiple whitespace to single space
+                while ($i + 1 < $length && ctype_space($code[$i + 1])) {
+                    $i++;
+                }
+                // Only keep space if needed (not around punctuation)
+                $prev = $result !== '' ? $result[strlen($result) - 1] : '';
+                $next = $i + 1 < $length ? $code[$i + 1] : '';
+                $punctuation = '{};,:()[]';
+                
+                if ($prev !== '' && $next !== '' && 
+                    strpos($punctuation, $prev) === false && 
+                    strpos($punctuation, $next) === false) {
+                    $result .= ' ';
+                }
+                $i++;
+                continue;
+            }
+            
+            $result .= $char;
+            $i++;
+        }
         
-        return trim($code);
+        return trim($result);
     }
     
     /**
