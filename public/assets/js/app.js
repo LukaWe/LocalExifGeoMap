@@ -201,7 +201,7 @@ const locales = {
 // High-volume support: 50,000 images
 // Batch limit: 10,000 images per upload (fixed from 500)
 // Languages: 11 including Bavarian/Oberpälzisch
-// Default language: English (always)
+// Default language: Browser detected (fallback: English)
 // Enhanced security and memory management
 
 /**
@@ -229,7 +229,7 @@ const FILE_UPLOAD_CONFIG = {
     ALLOWED_TRACK_EXTENSIONS: ['.gpx', '.kml', '.json', '.geojson']
 };
 
-// Application State - ALWAYS ENGLISH DEFAULT
+// Application State - Browser-detected language (fallback: English)
 let currentLang = 'en';
 let map = null;
 let currentTileLayer = null;
@@ -2575,20 +2575,32 @@ function initDarkMode() {
 
     const body = document.body;
 
-    // Initialize with DARK mode (default)
-    isDarkMode = true;
-    body.classList.add('dark-mode');
-    darkModeToggle.textContent = 'On';
-    darkModeToggle.style.backgroundColor = '#339af0';
+    // Detect system preference for dark mode (fallback: light mode)
+    const prefersDarkScheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    isDarkMode = prefersDarkScheme;
 
-    // Set default map style for Dark Mode (Index 7: CartoDB Dark Matter)
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+        darkModeToggle.textContent = 'On';
+        darkModeToggle.style.backgroundColor = '#339af0';
+    } else {
+        body.classList.remove('dark-mode');
+        darkModeToggle.textContent = 'Off';
+        darkModeToggle.style.backgroundColor = '#007bff';
+    }
+
+    // Set default map style based on theme
     setTimeout(() => {
         const mapSelect = document.getElementById('map-style-select');
         if (mapSelect) {
-            mapSelect.value = "7";
-            if (typeof changeMapStyle === 'function') changeMapStyle(7);
+            // Dark Mode: Index 7 (CartoDB Dark Matter), Light Mode: Index 0 (OSM Standard)
+            const mapIndex = isDarkMode ? 7 : 0;
+            mapSelect.value = String(mapIndex);
+            if (typeof changeMapStyle === 'function') changeMapStyle(mapIndex);
         }
     }, 100);
+
+    console.log('Dark mode detected from system:', isDarkMode ? 'ON' : 'OFF (fallback to light)');
 
     // Toggle dark mode
     darkModeToggle.addEventListener('click', (e) => {
@@ -2648,7 +2660,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('High-volume support: 50,000 images');
     console.log('Batch limit: 10,000 images per upload');
     console.log('Languages: 11 (including Bavarian)');
-    console.log('Default language: English (always)');
+    console.log('Default language: Browser detected (fallback: English)');
     console.log('Enhanced security and memory management');
     console.log('DOM loaded - initializing application...');
     console.log('Leaflet loaded:', typeof L !== 'undefined');
@@ -2681,7 +2693,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('=== GPS Track Viewer v21 - All Systems Operational ===');
         console.log('File limits: Max 50,000 files, 10,000 per batch, 100MB per file');
         console.log('Languages: 11 languages including Bavarian/Oberpälzisch');
-        console.log('Default language: ENGLISH (forced)');
+        console.log('Default language: BROWSER DETECTED (fallback: English)');
         console.log('Security: Enhanced validation and memory monitoring');
         console.log('Heatmap: Multilingual descriptions in 10 languages');
 
@@ -2697,7 +2709,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Application failed to initialize. Please reload the page.\n\nError: ' + error.message);
     }
 
-    // Language Initialization with Italian Easter Egg - ALWAYS ENGLISH DEFAULT
+    // Language Initialization with Italian Easter Egg - Detect browser default, fallback to English
     function initLanguage() {
         const languageDropdown = document.getElementById('language-dropdown');
         if (!languageDropdown) {
@@ -2705,12 +2717,38 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // CRITICAL: Force English as default
-        currentLang = 'en';
-        languageDropdown.value = 'en';
+        // Supported languages
+        const supportedLanguages = ['en', 'de', 'it', 'hr', 'pl', 'es', 'uk', 'nl', 'sv', 'no', 'by'];
 
-        // Update all UI text to English
-        updateLanguage('en');
+        // Detect browser language preference
+        function detectBrowserLanguage() {
+            // Get all browser languages in order of preference
+            const browserLanguages = navigator.languages
+                ? [...navigator.languages]
+                : [navigator.language || navigator.userLanguage || 'en'];
+
+            for (const browserLang of browserLanguages) {
+                // Extract base language code (e.g., 'de-DE' -> 'de')
+                const baseLang = browserLang.split('-')[0].toLowerCase();
+
+                if (supportedLanguages.includes(baseLang)) {
+                    console.log('Detected browser language:', baseLang);
+                    return baseLang;
+                }
+            }
+
+            // Fallback to English
+            console.log('Browser language not supported, falling back to English');
+            return 'en';
+        }
+
+        // Detect and set language
+        const detectedLang = detectBrowserLanguage();
+        currentLang = detectedLang;
+        languageDropdown.value = detectedLang;
+
+        // Update all UI text
+        updateLanguage(detectedLang);
 
         // Update Italian Easter Egg on init
         updateItalianEasterEgg();
@@ -2742,7 +2780,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateHeatmapSchemeLabels();
         });
 
-        console.log('Language initialized successfully');
+        console.log('Language initialized successfully (detected:', detectedLang + ')');
     }
 
     function updateItalianEasterEgg() {
@@ -3394,18 +3432,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="donations-content">
                         <h3>Support Our Project</h3>
                         <p>GPS Track Viewer is free and always will be. If you find it useful, consider supporting our development:</p>
-                        
-                        <h4>💳 PayPal</h4>
-                        <p><a href="https://paypal.me/gpstrackviewer" target="_blank">Donate via PayPal</a></p>
-                        
+                                                
                         <h4>₿ Bitcoin</h4>
                         <p><code>bc1q3lz8vxpk0rchqn6dq8g08rkcqts425csuvnjr2477uzdenak5n8sfds2ke</code></p>
                         
                         <h4>Ξ Ethereum</h4>
-                        <p><code>PLACEHOLDER</code></p>
+                        <p><code>0x4c6d2bFaF29145Feb5D8a1A8ef48DBeDc1A9b614</code></p>
                         
-                        <h4>🟡 Monero</h4>
-                        <p><code>PLACEHOLDER</code></p>
+                        <h4>Doge</h4>
+                        <p><code>DAyN14ByXLMPpbJUwf17Gvsc2JY2orZUVA</code></p>
+
+                        <h4>Litecoin</h4>
+                        <p><code>LgF3Z4UwpcJSjUUfGRSncRTmn93ojArTjt</code></p>
+
+                        <h4>Cardano</h4>
+                        <p><code>addr1qxvya9tftmddwgxr7wxx5dhvm9kvvvz0jprxpkycrkhvr05cf62kjhk66usv8uuvdgmwektvcccylyzxvrvfs8dwcxlq3l262v</code></p> 
                         
                         <p style="margin-top: 20px; font-size: 12px; color: var(--text-secondary);">Every contribution helps us improve the tool and keep it free for everyone. Thank you!</p>
                     </div>
