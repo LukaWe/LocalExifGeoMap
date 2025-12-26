@@ -33,8 +33,28 @@ final class Config
     public const ENABLE_DEBUGGER_TRAP = false;   // Disabled - was blocking DevTools
     public const ENABLE_ANTI_COPY = false;       // Disabled - was blocking right-click/keyboard
     
-    // Development mode (set to false in production!)
-    public const DEV_MODE = false;
+    // Development mode - now environment-based
+    // Set APP_ENV=development in your environment for dev mode
+    // Default is production (DEV_MODE = false)
+    public const DEV_MODE = false; // Legacy constant, use isDevMode() instead
+    
+    // IP-based rate limiting (optional, for high-traffic scenarios)
+    public const ENABLE_IP_RATE_LIMITING = true;
+    public const IP_RATE_LIMIT_REQUESTS = 200;   // Max requests per IP
+    public const IP_RATE_LIMIT_WINDOW = 60;      // Per minute
+    
+    /**
+     * Check if running in development mode
+     * Uses APP_ENV environment variable, falls back to DEV_MODE constant
+     */
+    public static function isDevMode(): bool
+    {
+        $env = getenv('APP_ENV') ?: ($_ENV['APP_ENV'] ?? '');
+        if ($env !== '') {
+            return strtolower($env) === 'development' || strtolower($env) === 'dev';
+        }
+        return self::DEV_MODE;
+    }
     
     /**
      * Get absolute path to a project directory

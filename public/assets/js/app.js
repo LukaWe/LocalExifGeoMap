@@ -1,4 +1,17 @@
-﻿
+﻿/**
+ * GPS Track Viewer v21 - Production Configuration
+ * Set PRODUCTION_MODE = true before deployment to silence debug logs
+ */
+const PRODUCTION_MODE = true;
+
+// Silent logging wrapper for production
+const log = {
+    debug: (...args) => !PRODUCTION_MODE && console.log('[DEBUG]', ...args),
+    info: (...args) => !PRODUCTION_MODE && console.log('[INFO]', ...args),
+    warn: (...args) => !PRODUCTION_MODE && console.warn('[WARN]', ...args),
+    error: (...args) => console.error('[ERROR]', ...args) // Always show errors
+};
+
 // Heatmap Color Schemes - v19 Enhanced (5 schemes)
 const heatmapSchemes = {
     default: {

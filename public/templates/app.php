@@ -658,6 +658,7 @@
     <script nonce="<?= $nonce ?>" src="/vendor/exifr/exifr.umd.js"></script>
     <script nonce="<?= $nonce ?>" src="/vendor/dom-to-image/dom-to-image.min.js"></script>
     <script nonce="<?= $nonce ?>" src="/vendor/chartjs/chart.umd.min.js"></script>
+    <script nonce="<?= $nonce ?>" src="/vendor/dompurify/purify.min.js"></script>
     
     <!-- Application JavaScript (served through PHP with obfuscation) -->
     <script nonce="<?= $nonce ?>" src="<?= $assetUrl('lang.js') ?>"></script>
